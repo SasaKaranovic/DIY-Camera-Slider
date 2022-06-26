@@ -4,6 +4,11 @@
 We are trying to use off-the-shelf components wherever possible to make this open-source open-hardware project accessible to everyone.
 The custom PCB is optional. Manufacturing files are in `Manufacturing files` folder. Source files are in `Altium Source Files` which you could use to modify the design.
 
+## Active BOM
+
+If you decide to build the PCB, you can follow the [Active BOM](https://sasakaranovic.com/activebom/diy-camera-slider.html) to help you visualize where
+each component is placed and help during assembly.
+
 
 ## Part list
 
