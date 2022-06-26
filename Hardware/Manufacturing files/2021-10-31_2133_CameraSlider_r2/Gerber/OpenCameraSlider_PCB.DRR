@@ -1,0 +1,19 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: OpenCameraSlider_PCB.PcbDoc   2021-10-31  21:33:19
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : OpenCameraSlider_PCB.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      16mil (0.4mm)                                             Round             11        PTH        1.32inch (33.54mm)
+T2      32mil (0.8mm)                                             Round             4         PTH        1.07inch (27.10mm)
+T3      35mil (0.9mm)                                             Round             12        PTH        1.83inch (46.51mm)
+T4      63mil (1.6mm)                                             Round             16        PTH        3.32inch (84.36mm)
+T5      32mil (0.8mm)                                             Round             62        NPTH       8.41inch (213.58mm)
+T6      138mil (3.5mm)                                            Round             3         NPTH       3.90inch (99.02mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              108
+
+Total Processing Time (hh:mm:ss) : 00:00:00

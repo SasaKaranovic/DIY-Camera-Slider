@@ -1,0 +1,31 @@
+Altium Designer Pick and Place Locations
+C:\Users\Sasa\Desktop\git\CameraSlider\Hardware\OpenCameraSlider_r2\Project Outputs for OpenCameraSlider\Pick Place\Pick Place for OpenCameraSlider_PCB.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       31-10-21
+Time:       21:33
+Revision:   Not in VersionControl
+Variant:    No variations
+Units used: mil
+
+Designator Comment               Layer       Footprint                 Center-X(mil) Center-Y(mil) Rotation Description                                                                                                      
+R2         Res                   TopLayer    0603                      865.000mil    985.000mil    180      Resistor                                                                                                         
+R5         Res                   TopLayer    0603                      -90.000mil    1580.000mil   0        Resistor                                                                                                         
+R4         Res                   TopLayer    0603                      125.000mil    1580.000mil   0        Resistor                                                                                                         
+U5         "DRV8825 Module"      TopLayer    DRV8825_MODULE            -660.394mil   1175.000mil   90       "DRV8825 Module"                                                                                                 
+U4         "DRV8825 Module"      TopLayer    DRV8825_MODULE            -1487.894mil  1175.000mil   90       "DRV8825 Module"                                                                                                 
+U3         "ESP32 Dev Kit"       TopLayer    ESP32-DevModule           739.606mil    974.991mil    90       ""                                                                                                               
+P1         "Power In"            TopLayer    TERMINAL_2POS_90DEG_2PART 1413.898mil   1695.000mil   180      "2 Position Terminal Block Header, Male Pins, Shrouded (4 Side) 0.138" (3.50mm) 90°, Right Angle - Through Hole" 
+U2         "LM2596-DC-DC Module" BottomLayer LM2596-DC-DC_Module       735.000mil    970.000mil    180      "LM2596-DC-DC Module HW-411"                                                                                     
+P4         "X-Axis Motor"        TopLayer    TERMINAL_4POS_90DEG_2PART -1493.898mil  1700.000mil   180      "TERM BLOCK HDR 4POS 90DEG 3.5MM"                                                                                
+P5         "Z-Axis Motor"        TopLayer    TERMINAL_4POS_90DEG_2PART -664.193mil   1700.000mil   180      "TERM BLOCK HDR 4POS 90DEG 3.5MM"                                                                                
+P7         "Hall Sensor"         TopLayer    TERMINAL_3POS_90DEG_2PART 17.205mil     1700.000mil   180      "TERM BLOCK HDR 3POS 90DEG 3.5MM"                                                                                
+P8         "End Switch"          TopLayer    TERMINAL_3POS_90DEG_2PART 535.000mil    1700.000mil   180      "TERM BLOCK HDR 3POS 90DEG 3.5MM"                                                                                
+P10        "Header 3X2"          TopLayer    HDR2X3                    -1640.000mil  720.000mil    0        "Header, 3-Pin, Dual row"                                                                                        
+P11        "Header 3X2"          TopLayer    HDR2X3                    -808.938mil   720.000mil    0        "Header, 3-Pin, Dual row"                                                                                        
+R1         Res                   TopLayer    0603                      640.000mil    1580.000mil   0        Resistor                                                                                                         
+R3         Res                   TopLayer    0603                      425.000mil    1580.000mil   0        Resistor                                                                                                         
+C1         16V                   TopLayer    Electrolytic_Cap_3.2mm    -1676.438mil  1172.008mil   270      "Polarized Capacitor (Axial)"                                                                                    
+C2         16V                   TopLayer    Electrolytic_Cap_3.2mm    -861.438mil   1172.008mil   270      "Polarized Capacitor (Axial)"                                                                                    

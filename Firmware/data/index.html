@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Camera Slider v%FW_VERSION% - Sasa Karanovic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/custom.min.css">
+  <link href="css/fontawesome.min.css" rel="stylesheet">
+  <link href="css/brands.min.css" rel="stylesheet">
+  <link href="css/solid.min.css" rel="stylesheet">
+  <link rel="shortcut icon" type="image/jpg" href="favicon.png"/>
+</head>
+<body>
+  <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">Camera Slider</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="settings.html">Settings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://sasakaranovic.com/projects/diy-camera-slider/" target="_blank">Project Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/SasaKaranovic/DIY-Camera-Slider" target="_blank">Source Code</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page header - Camera slider -->
+  <div class="container">
+    <!-- Main content  -->
+    <div class="row">
+
+      <!-- Left column -->
+      <div class="col-lg-5 col-md-5 col-sm-5">
+
+        <!-- Camera status -->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="page-header">
+              <h2>Status</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" id="cameraStatusRow">
+
+          <div class="col-lg-12">
+            <div class="bs-component">
+              Slider homed: <span id="status-homed"><span class="badge badge-success">??</span></span>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="bs-component">
+              Slider position: <span id="status-position">??</span>mm
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="bs-component">
+              Rotation position: <span id="status-rotation">??</span>°
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="bs-component">
+              Start position set at <span id="status-startSlide">??</span>mm and <span id="status-startRotation">??</span>°
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="bs-component">
+              End position set at <span id="status-endSlide">??</span>mm and <span id="status-endRotation">??</span>°
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="bs-component">
+              <a href="javascript:void(0);" id="refreshStatus">Reload</a>
+            </div>
+          </div>
+
+        </div>
+        <!-- End camera status -->
+
+
+        <!-- Camera status -->
+        <div class="row mt-4">
+          <div class="col-lg-12 mr-1">
+            <div class="page-header">
+              <h2 >Manual control</h2>
+            </div>
+          </div>
+
+          <div class="col-lg-12 mr-1">
+                <legend>Slide (absolute)</legend>
+                <fieldset class="form-group">
+                  <label for="labelManualPosition" data-toggle="tooltip" data-html="true" title="Use mouse wheel to increase/decrease value by 10mm<br>Use CTRL+ mouse wheel to increase/decrease value by 50mm">Position: 0mm</label>
+                  <input type="range" class="custom-range" id="sliderManualPosition" min="0" max="%RAIL_LENGTH%" step="%MIN_STEP_SLIDER%" value="0">
+                </fieldset>
+
+                <legend>Rotate (relative)</legend>
+                <fieldset class="form-group">
+                  <label for="labelManualRotation" data-toggle="tooltip" data-html="true" title="Use mouse wheel to increase/decrease value by 1°<br>Use CTRL+ mouse wheel to increase/decrease value by 5°<br>Double-click to reset to 0°">Rotate for: 0°</label>
+
+                  <input type="range" class="custom-range" id="sliderManualRotation" min="-180" max="180" step="1" value="0">
+                </fieldset>
+
+          </div>
+
+          <div class="col-lg-12 mr-2">
+                <button type="button" id="btnManualMove" class="btn btn-primary">Move!</button>
+                <button type="button" id="btnSetStartPos" class="btn btn-primary">Set as START position</button>
+                <button type="button" id="btnSetEndPos" class="btn btn-primary">Set as END position</button>
+          </div>         
+
+          <div class="row mr-4">
+            <div class="col-lg-12 mr-2">
+              <hr />
+            </div>
+          </div>
+
+          <div class="col-lg-12 mr-2">
+                <button type="button" id="btnMoveToStart" class="btn btn-primary">Move to start</button>
+                <button type="button" id="btnMoveToEnd" class="btn btn-primary">Move to end</button>
+          </div>
+
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-lg-12 mr-2">
+
+
+                <div class="row">
+                <div class="col-lg-12 mr-2">
+                <legend>Manual Moves Configuration</legend>
+                </div>
+
+                <!-- Left speed column -->
+                <div class="col-lg-5 mr-2">
+                <div class="form-group">
+                  <label class="control-label">Slider speed</label>
+                  <div class="input-group mb-1">
+                    <input type="text" id="cfgSliderSpeed" class="form-control" aria-label="" size="5" maxlength="7" value="%%">
+                    <div class="input-group-append">
+                      <span class="input-group-text">mm/s</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label">Rotation speed</label>
+                  <div class="input-group mb-1">
+                    <input type="text" id="cfgRotationSpeed" class="form-control" aria-label="" size="5" maxlength="7"  value="60.0">
+                    <div class="input-group-append">
+                      <span class="input-group-text">deg/s</span>
+                    </div>
+                  </div>
+                </div>
+              </div>  <!-- End left speed column -->
+
+                <!-- Right speed column -->
+                <div class="col-lg-5 mr-2">
+                <div class="form-group">
+                  <label class="control-label">Slider acceleration</label>
+                  <div class="input-group mb-1">
+                    <input type="text" id="cfgSliderAccel" class="form-control" aria-label="" size="5" maxlength="7" value="60.0">
+                    <div class="input-group-append">
+                      <span class="input-group-text">mm/s<sup>2</sup></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label">Rotation acceleration</label>
+                  <div class="input-group mb-1">
+                    <input type="text" id="cfgRotationAccel" class="form-control" aria-label="" size="5" maxlength="7"  value="30.0">
+                    <div class="input-group-append">
+                      <span class="input-group-text">deg/s<sup>2</sup></span>
+                    </div>
+                  </div>
+                </div>
+              </div>  <!-- End right speed column -->
+
+              </div >
+
+          </div>
+        </div>  <!-- End camera status -->
+
+
+      </div> <!-- End left column -->
+
+      <!-- Right column -->
+      <div class="col-lg-5 col-md-5 col-sm-5 offset-2">
+      <div class="row">
+
+      <!-- Setup camera
+      ================================================== -->
+          <div class="col-lg-12">
+            <div class="page-header">
+              <h2>Automatic sliding</h2>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <form>
+                <legend>Position</legend>
+              <div class="form-group form-inline">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="checkFromStartToEnd" checked>
+                  <label class="form-check-label" for="checkFromStartToEnd">Calculate using START and END positions</label>
+                </div>
+              </div>
+
+            <div id="manualSlidingPos" style="display:none">
+                <fieldset class="form-group">
+                  <label for="labelStartPosition">Start position: 0mm</label>
+                  <input type="range" class="custom-range" id="sliderStartPosition" min="0" max="%RAIL_LENGTH%" step="10" value="0">
+                </fieldset>
+
+                <fieldset class="form-group">
+                  <label for="labelEndPosition">End position: %RAIL_LENGTH%mm</label>
+                  <input type="range" class="custom-range" id="sliderEndPosition" min="0" max="%RAIL_LENGTH%" step="10" value="%RAIL_LENGTH%" >
+                </fieldset>
+
+
+                <legend>Rotation</legend>
+                <fieldset class="form-group">
+                  <label for="labelRotateBy">Rotate camera for: 0°</label>
+                  <input type="range" class="custom-range" id="sliderRotateBy" min="-360" max="360" step="1" value="0" >
+                </fieldset>
+            </div>
+
+
+                <legend>Duration</legend>
+              <div class="form-group form-inline">
+                <input type="text" id="inputHours" name="hours" placeholder="Hour(s)" class="form-control form-control-sm" size="7" maxlength="3">
+                <input type="text" id="inputMinutes" name="minutes" placeholder="Minute(s)" class="form-control form-control-sm" size="7" maxlength="2">
+                <input type="text" id="inputSeconds" name="seconds" placeholder="Second(s)" class="form-control form-control-sm" size="7" maxlength="2">
+              </div>
+
+
+                <button type="button" class="btn btn-primary" id="btnAutoSlide">Start</button>
+
+            </form>
+          </div>
+
+          <div class="col-lg-12 mt-5">
+                <div class="row">
+                <div class="col-lg-12 mr-2">
+                <legend>Setup</legend>
+                </div>
+                </div>
+
+                <div class="bmb-3">
+                  <div class="btn-group" role="group">
+                    <button type="button" id="btnHomeSlider" class="btn btn-secondary">Home Slider</button>
+                  </div>
+
+                  <div class="btn-group" role="group">
+                    <button type="button" id="btnHomeRotation" class="btn btn-secondary">Home Rotation</button>
+                  </div>
+                </div>
+
+                <div class="bmb-3 mt-3">
+                  <div class="btn-group" role="group">
+                    <button type="button" id="btnMotorsOn" class="btn btn-secondary">Motors ON</button>
+                  </div>
+                  <div class="btn-group" role="group">
+                    <button type="button" id="btnMotorsOff" class="btn btn-secondary">Motors OFF</button>
+                  </div>
+                </div>
+
+          </div>
+
+      </div>
+    </div> <!-- End right column -->
+    </div>
+
+    <footer class="w-100 py-2 flex-shrink-3 mt-5 dark-bg">
+            <div class="row gy-4 gx-5">
+                <div class="col-lg-6 col-md-6">
+                    <p class="small text-muted">
+                      Camera slider v%FW_VERSION% made by <a href="https://SasaKaranovic.com/" target="_blank">Saša Karanović</a><br>
+                      Released as open-source and open-hardware for you to hack and enjoy! :)<br>
+                  </p>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                      <a class="m-2" href="https://sasakaranovic.com/" target="_blank"><i class="fas fa-home"></i> Blog</a>
+                      <a class="m-2" href="https://youtube.com/c/sasakaranovic" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+                      <a class="m-2" href="https://twitter.com/_sasakaranovic_" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+                      <a class="m-2" href="https://github.com/sasakaranovic" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                      <a class="m-2" href="https://buymeacoffee.com/sasakaranovic" target="_blank"><i class="fas fa-mug-hot"></i> Buy me a coffee</a>
+                </div>
+            </div>
+    </footer>
+  </div>
+
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/cameraslider.js"></script>
+</body>
+</html>
