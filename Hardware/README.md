@@ -21,10 +21,14 @@ Links are provided for reference. Feel free to do your own search and find bette
 - 2x [Stepper Motor Driver](https://www.aliexpress.com/item/10000278156894.html)
 - 1x [51104 Axial Ball Bearing](https://www.aliexpress.com/item/32825301161.html)
 - 1x [F8-16M Axial Ball Bearing](https://www.aliexpress.com/item/1005001624909472.html)
-- 1x [6mm GT2 280mm Closed Loop Timing Belt](https://www.aliexpress.com/item/1005003420095545.html)
+- 1x [6mm GT2 200mm Closed Loop Timing Belt](https://www.aliexpress.com/item/32868149860.html)
 - 1x [6mm Cut-to-Size GT2 Timing Belt](https://www.aliexpress.com/item/1005004103945098.html)
 - 2x [GT2 Timing Pulley 6mm 20 teeth](https://www.aliexpress.com/item/32629617890.html)
-- 2x [GT2 Idler 6mm](https://www.aliexpress.com/item/32671018751.html)
+- 1x [GT2 Idler 6mm](https://www.aliexpress.com/item/32671018751.html)
+
+
+Thanks @Eisbaeeer [1](https://github.com/SasaKaranovic/DIY-Camera-Slider/issues/2)
+
 
 ---
 [<- Go back to repository root](../README.md)
