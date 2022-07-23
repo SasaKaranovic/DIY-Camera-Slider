@@ -25,6 +25,7 @@ Links are provided for reference. Feel free to do your own search and find bette
 - 1x [6mm Cut-to-Size GT2 Timing Belt](https://www.aliexpress.com/item/1005004103945098.html)
 - 2x [GT2 Timing Pulley 6mm 20 teeth](https://www.aliexpress.com/item/32629617890.html)
 - 1x [GT2 Idler 6mm](https://www.aliexpress.com/item/32671018751.html)
+- 1x [Micro switch / Limit Switch](https://www.aliexpress.com/item/4000638031271.html)
 
 
 Thanks @Eisbaeeer [1](https://github.com/SasaKaranovic/DIY-Camera-Slider/issues/2)
