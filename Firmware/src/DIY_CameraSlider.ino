@@ -1,14 +1,15 @@
+#include <ESPmDNS.h>
+#include <WiFiManager.h>
 #include "WiFi.h"
 #include "ESPAsyncWebServer.h"
-#include "SPIFFS.h"
-#include <ESPmDNS.h>
+#include "LittleFS.h"
 #include <FlexyStepper.h>
 #include "config_cameraslider.h"
 #include "config_wifi.h"
 #include "include/PersistSettings.h"
 
+WiFiManager wifiManager;
 AsyncWebServer server(80);
-int WiFi_status = WL_IDLE_STATUS; 
 
 // We will use persistent storage to store our Camera Slider configuration
 // but also allow us to edit it trough web/api
@@ -44,8 +45,21 @@ PersistSettings<SliderConfigStruct> SliderConfig(SliderConfigStruct::Version);
 void setup()
 {
     // Configure Serial communication
-	Serial.begin(115200);
+    Serial.begin(115200);
+    delay(2000);
+    Serial.setDebugOutput(true);
     Serial.println("DIY Camera Slider");
+
+    WiFi.mode(WIFI_STA);
+
+    WiFi.setHostname(MDNS_NAME);
+    WiFi.setTxPower(WIFI_POWER_8_5dBm);
+
+    int txPower = WiFi.getTxPower();
+    Serial.print("TX power: ");
+    Serial.println(txPower);
+
+    delay(1000);
 
     // Peristent device config
     SliderConfig.Begin();
@@ -70,22 +84,28 @@ void setup()
 	delay(1000);
 
 	// Connect to WiFi
-	while ( WiFi_status != WL_CONNECTED)
-    {
-		Serial.print("Connecting to SSID: ");
-		Serial.println(ssid);
-		WiFi_status = WiFi.begin(ssid, password);
+    bool res;
+    res = wifiManager.autoConnect("SK-DIY-CameraSlider");
 
-		// wait 5 seconds before retrying
-		delay(5000);
-	}
+    wifiManager.setHostname(MDNS_NAME);
+    wifiManager.setConnectRetries(4);
 
-	// Initialize SPIFFS
-	if(!SPIFFS.begin(true))
-    {
-		Serial.println("An Error has occurred while mounting SPIFFS");
-		while(1);
-	}
+    if(!res) {
+        Serial.println("Failed to connect or hit timeout");
+        ESP.restart();
+    }
+    else {
+        //if you get here you have connected to the WiFi
+        Serial.println("Connected.");
+    }
+
+    // Initialize LittleFS
+    Serial.print("Starting LittleFS...");
+    if(!LittleFS.begin()){
+        Serial.println("An Error has occurred while mounting LittleFS");
+        return;
+    }
+    Serial.println("done.");
 
 	Serial.print("WiFi IP: ");
 	Serial.println(WiFi.localIP());

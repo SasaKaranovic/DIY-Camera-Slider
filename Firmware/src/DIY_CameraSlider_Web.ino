@@ -76,22 +76,22 @@ void setupWebServer(void)
 
     // send a file when /index is requested
     server.on("/index.html", HTTP_ANY, [](AsyncWebServerRequest *request){
-        request->send(SPIFFS, "/index.html", "text/html", false, template_const_processor);
+        request->send(LittleFS, "/index.html", "text/html", false, template_const_processor);
     });
 
     server.on("/settings.html", HTTP_ANY, [](AsyncWebServerRequest *request){
-        request->send(SPIFFS, "/settings.html", "text/html", false, template_const_processor);
+        request->send(LittleFS, "/settings.html", "text/html", false, template_const_processor);
     });
 
     server.on("/", HTTP_ANY, [](AsyncWebServerRequest *request) {
-        request->send(SPIFFS, "/index.html", "text/html", false, template_const_processor);
+        request->send(LittleFS, "/index.html", "text/html", false, template_const_processor);
     });
 
-    server.serveStatic("/js/", SPIFFS, "/js/");
-    server.serveStatic("/css/", SPIFFS, "/css/");
-    server.serveStatic("/webfonts/", SPIFFS, "/webfonts/");
-    server.serveStatic("/favicon.png", SPIFFS, "/favicon.png");
-    server.serveStatic("/favicon.ico", SPIFFS, "/favicon.ico");
+    server.serveStatic("/js/", LittleFS, "/js/").setCacheControl("max-age=2592000");;
+    server.serveStatic("/css/", LittleFS, "/css/").setCacheControl("max-age=2592000");;
+    server.serveStatic("/webfonts/", LittleFS, "/webfonts/").setCacheControl("max-age=2592000");;
+    server.serveStatic("/favicon.png", LittleFS, "/favicon.png").setCacheControl("max-age=2592000");;
+    server.serveStatic("/favicon.ico", LittleFS, "/favicon.ico").setCacheControl("max-age=2592000");;
 
     // Homing request - Sliding
     server.on("/api/home-slider", HTTP_GET, [] (AsyncWebServerRequest *request) {
