@@ -1,18 +1,49 @@
 // Shorthand for $( document ).ready()
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl, {
+    'custom-class': 'custom-tooltip'
+  })
+})
 $(function() {
-    $('[data-toggle="tooltip"]').tooltip();
-
-	$('#sliderStartPosition').on('input change', function(){
-		$("label[for='labelStartPosition']").text("Start position: " + parseInt(this.value) +"mm");
+    $('[data-bs-toggle="tooltip"]').tooltip();
+	
+	$('#sliderStartPosition').on('input change', function() {
+		const label = $("label[for='labelStartPosition']");
+		let span = label.find("span.dynamic-text");
+	
+		if (span.length === 0) {
+			span = $("<span class='dynamic-text'></span>");
+			label.append(span);
+		}
+	
+		span.text(parseInt(this.value) + "mm");
 	});
 
-	$('#sliderEndPosition').on('input change', function(){	
-		$("label[for='labelEndPosition']").text("End position: " + parseInt(this.value) +"mm");
+	$('#sliderEndPosition').on('input change', function() {
+		const label = $("label[for='labelEndPosition']");
+		let span = label.find("span.dynamic-text");
+	
+		if (span.length === 0) {
+			span = $("<span class='dynamic-text'></span>");
+			label.append(span);
+		}
+	
+		span.text(parseInt(this.value) + "mm");
 	});
 
-	$('#sliderRotateBy').on('input change', function(){	
-		$("label[for='labelRotateBy']").text("Rotate camera for: " + parseInt(this.value) +"°");
+	$('#sliderRotateBy').on('input change', function() {
+		const label = $("label[for='labelRotateBy']");
+		let span = label.find("span.dynamic-text");
+	
+		if (span.length === 0) {
+			span = $("<span class='dynamic-text'></span>");
+			label.append(span);
+		}
+	
+		span.text(parseInt(this.value) + "°");
 	});
+
 
 	$('#sliderManualPosition').on('input change', function(){	
 		ui_update_slider_label();
@@ -432,15 +463,29 @@ function mousewheel_rotation(event){
     ui_update_rotation_label();
 }
 
+function ui_update_slider_label() {
+    const label = $("label[for='labelManualPosition']");
+    let span = label.find("span.dynamic-text");
 
-function ui_update_slider_label(){
-    $("label[for='labelManualPosition']").text("Position: " + parseInt($('#sliderManualPosition').val()) +"mm");
+    if (span.length === 0) {
+        span = $("<span class='dynamic-text'></span>");
+        label.append(span);
+    }
+
+    span.text(parseInt($('#sliderManualPosition').val()) + "mm");
 }
 
-function ui_update_rotation_label(){
-    $("label[for='labelManualRotation']").text("Rotate for: " + parseInt($('#sliderManualRotation').val()) +"°");
-}
+function ui_update_rotation_label() {
+    const label = $("label[for='labelManualRotation']");
+    let span = label.find("span.dynamic-text");
 
+    if (span.length === 0) {
+        span = $("<span class='dynamic-text'></span>");
+        label.append(span);
+    }
+
+    span.text(parseInt($('#sliderManualRotation').val()) + "°");
+}
 
 function moveToPosition(xPos, xSpeed, xAccel, rPos, rSpeed, rAccel){
 	// Send 

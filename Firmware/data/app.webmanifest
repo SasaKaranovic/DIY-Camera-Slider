@@ -1,0 +1,32 @@
+{
+  "name": "Camera Slider",
+  "description": "DIY Camera Slider",
+  "start_url": "",
+  "lang": "us-US",
+  "theme_color": "#ebebeb",
+  "background_color": "#060606",
+  "display": "standalone",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "icon32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "icon120.png",
+      "type": "image/png",
+      "sizes": "120x120"
+    },
+    {
+      "src": "icon192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
+}

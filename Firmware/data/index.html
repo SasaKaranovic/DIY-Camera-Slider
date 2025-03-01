@@ -2,47 +2,280 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Camera Slider v%FW_VERSION% - Sasa Karanovic</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Camera Slider v%FW_VERSION%</title>
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Camera Slider">
+  <meta name="apple-mobile-web-app-title" content="Camera Slider">
+  <meta name="theme-color" content="#060606">
+  <meta name="msapplication-navbutton-color" content="#060606">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+  <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/custom.min.css">
-  <link href="css/fontawesome.min.css" rel="stylesheet">
-  <link href="css/brands.min.css" rel="stylesheet">
-  <link href="css/solid.min.css" rel="stylesheet">
-  <link rel="shortcut icon" type="image/jpg" href="favicon.png"/>
+
+  <link rel="manifest" href="app.webmanifest">
+
+  <link rel="mask-icon" href="website_icon.svg" color="red">
+  <link rel="apple-touch-icon" href="icon120.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="icon120.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="icon192.png">
+
+  <link rel="shortcut icon" type="image/png" href="icon.svg"/>
+  <link rel="icon" href="icon16.png" sizes="16x16" type="image/png">
+  <link rel="icon" href="icon32.png" sizes="32x32" type="image/png">
 </head>
 <body>
-  <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-    <div class="container">
-      <a href="index.html" class="navbar-brand">Camera Slider</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="settings.html">Settings</a>
+    <!-- Start embeded SVG Icons -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="cslogo" viewBox="0 0 48 48">
+        <path class="st0" d="M44,39h-15v-2h-2v-4h2v-2h9c1.9249878,0,3.5-1.5750122,3.5-3.5v-15.75c0-1.9249878-1.5750122-3.5-3.5-3.5h-4.2003174c-.5774536,0-1.1992798-.4482422-1.3818359-.9960938l-1.0854492-3.2574463c-.1826172-.5480347-.8046875-.99646-1.3823853-.99646h-11.9000244c-.5776367,0-1.199646.4483643-1.3822021.9963379l-1.0853882,3.2572021c-.1826172.5480347-.8046875.99646-1.3823853.99646h-4.2000122c-1.9249878,0-3.5,1.5750122-3.5,3.5v15.75c0,1.9249878,1.5750122,3.5,3.5,3.5h9v2h2v4h-2v2H4c-1.6568604,0-3,1.3431396-3,3s1.3431396,3,3,3h40c1.6568604,0,3-1.3431396,3-3s-1.3431396-3-3-3ZM36.7750244,11.7475586c.6768799,0,1.2249756.5487671,1.2249756,1.2249756,0,.6769409-.5484619,1.2250366-1.2249756,1.2250366-.6762085,0-1.2250366-.5480957-1.2250366-1.2250366,0-.6762085.5488281-1.2249756,1.2250366-1.2249756ZM15.25,18.75c0-4.8320923,3.9175415-8.75,8.75-8.75,4.8317261,0,8.75,3.9179077,8.75,8.75,0,4.8324585-3.9182739,8.75-8.75,8.75-4.8324585,0-8.75-3.9175415-8.75-8.75ZM29.25,18.75c0,2.8997803-2.3509521,5.25-5.25,5.25-2.8997803,0-5.25-2.3502197-5.25-5.25,0-2.8986816,2.3502197-5.25,5.25-5.25,2.8990479,0,5.25,2.3513184,5.25,5.25Z"/>
+      </symbol>
+      <symbol id="arrowDown" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"/>
+      </symbol>
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+      </symbol>
+      <symbol id="cog" viewBox="0 0 16 16">
+        <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+        <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+      </symbol>
+      <symbol id="info" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+      </symbol>
+      <symbol id="git" viewBox="0 0 16 16">
+        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+      </symbol>
+      <symbol id="mail" viewBox="0 0 16 16">
+        <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2zm3.708 6.208L1 11.105V5.383zM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2z"/>
+        <path d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648m-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"/>
+      </symbol>
+      <symbol id="link" viewBox="0 0 16 16">
+        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/>
+        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/>
+      </symbol>
+      <symbol id="twitter" viewBox="0 0 16 16">
+        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+      </symbol>
+      <symbol id="youtube" viewBox="0 0 16 16">
+        <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
+      </symbol>
+      <symbol id="coffee" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M.5 6a.5.5 0 0 0-.488.608l1.652 7.434A2.5 2.5 0 0 0 4.104 16h5.792a2.5 2.5 0 0 0 2.44-1.958l.131-.59a3 3 0 0 0 1.3-5.854l.221-.99A.5.5 0 0 0 13.5 6zM13 12.5a2 2 0 0 1-.316-.025l.867-3.898A2.001 2.001 0 0 1 13 12.5M2.64 13.825 1.123 7h11.754l-1.517 6.825A1.5 1.5 0 0 1 9.896 15H4.104a1.5 1.5 0 0 1-1.464-1.175"/>
+        <path d="m4.4.8-.003.004-.014.019a4 4 0 0 0-.204.31 2 2 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.6.6 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3 3 0 0 1-.202.388 5 5 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 3.6 4.2l.003-.004.014-.019a4 4 0 0 0 .204-.31 2 2 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.6.6 0 0 0-.09-.252A4 4 0 0 0 3.6 2.8l-.01-.012a5 5 0 0 1-.37-.543A1.53 1.53 0 0 1 3 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a6 6 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 4.4.8m3 0-.003.004-.014.019a4 4 0 0 0-.204.31 2 2 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.6.6 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3 3 0 0 1-.202.388 5 5 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 6.6 4.2l.003-.004.014-.019a4 4 0 0 0 .204-.31 2 2 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.6.6 0 0 0-.09-.252A4 4 0 0 0 6.6 2.8l-.01-.012a5 5 0 0 1-.37-.543A1.53 1.53 0 0 1 6 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a6 6 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 7.4.8m3 0-.003.004-.014.019a4 4 0 0 0-.204.31 2 2 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.6.6 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3 3 0 0 1-.202.388 5 5 0 0 1-.252.382l-.019.025-.005.008-.002.002A.5.5 0 0 1 9.6 4.2l.003-.004.014-.019a4 4 0 0 0 .204-.31 2 2 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.6.6 0 0 0-.09-.252A4 4 0 0 0 9.6 2.8l-.01-.012a5 5 0 0 1-.37-.543A1.53 1.53 0 0 1 9 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a6 6 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 10.4.8"/>
+      </symbol>
+      <symbol id="reload" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+      </symbol>
+    </svg>
+    <!-- End embeded SVG Icons -->
+
+   <!-- Start Navbar Container-->
+   <header>
+
+    <!-- Start settings -->
+    <div class="collapse bg-body" id="navbarHeader">
+      <div class="container">
+        <div class="row justify-content-around">
+          
+          <div class="col-lg-12 col-md-10 col-sm-6 py-4 border border-0 px-2 m-0">
+            <h4>Camera Slider Settings</h4>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-6 p-5 border border-2 border-light rounded-4 rounded-end-0">
+            <div class="form-group mb-4">
+              <label class="control-label">Sliding rail length</label>
+              <div class="input-group mb-1">
+                <input type="text" pattern="[0-9]*" id="config_rail_length" class="form-control" aria-label="" size="5" maxlength="8" value="%RAIL_LENGTH%">
+                <div class="input-group-append">
+                  <span class="input-group-text">mm</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <label class="control-label">Sliding rail minimum step</label>
+              <div class="input-group mb-1">
+                <input type="text" pattern="[0-9]*" id="config_rail_min_step" class="form-control" aria-label="" size="5" maxlength="8" value="%MIN_STEP_SLIDER%">
+                <div class="input-group-append">
+                  <span class="input-group-text">mm</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-6 p-5 border border-2 border-light border-end-0 border-start-0">
+            <div class="form-group mb-4">
+              <label class="control-label">Homing Speed - Slider</label>
+              <div class="input-group mb-1">
+                <input type="text" pattern="[0-9]*" id="config_homing_speed_slider" class="form-control" aria-label="" size="5" maxlength="8" value="%HOMING_SPEED_SLIDER%">
+                <div class="input-group-append">
+                  <span class="input-group-text">mm/s</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <label class="control-label">Homing Speed - Rotation</label>
+              <div class="input-group mb-1">
+                <input type="text" pattern="[0-9]*" id="config_homing_speed_rotation" class="form-control" aria-label="" size="5" maxlength="8" value="%HOMING_SPEED_ROTATION%">
+                <div class="input-group-append">
+                  <span class="input-group-text">mm/s</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-6 p-5 border border-2 border-light rounded-4 rounded-start-0">
+            <div class="form-group mb-4">
+              <label class="control-label">Slider motor steps per mm</label>
+              <div class="input-group mb-1">
+                <input type="text" pattern="[0-9]*" id="config_steps_per_mm_slider" class="form-control" aria-label="" size="5" maxlength="8" value="%SLIDER_STEPS_PER_MM%">
+                <div class="input-group-append">
+                  <span class="input-group-text">steps/mm</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <label class="control-label">Rotation motor steps per mm</label>
+              <div class="input-group mb-1">
+                <input type="text" pattern="[0-9]*" id="config_steps_per_mm_rotation" class="form-control" aria-label="" size="5" maxlength="8" value="%ROTATION_STEPS_PER_MM%">
+                <div class="input-group-append">
+                  <span class="input-group-text">steps/mm</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12 col-md-10 col-sm-6 p-4 border border-2 rounded-4 border-light gy-4">
+            <div class="d-lg-flex d-md-flex justify-content-around align-items-center">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="invert_homing_direction" %CHECK_BOX_HOMING_INVERTED%>
+                <label class="form-check-label" for="invert_homing_direction">Invert homing direction</label>
+              </div>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="invert_slider_direction" %CHECK_BOX_SLIDING_INVERTED%>
+                <label class="form-check-label" for="invert_slider_direction">Invert slider direction</label>
+              </div>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="invert_rotation_direction" %CHECK_BOX_ROTATION_INVERTED%>
+                <label class="form-check-label" for="invert_rotation_direction">Invert rotation direction</label>
+              </div>
+              <div class="d-flex gap-3">
+                <button type="button" id="btn_SaveSettings" class="btn btn-primary">Save settings</button>
+                <button type="button" id="btn_ResetSettings" class="btn btn-danger">Reset to default settings</button>
+              </div>
+            </div>
+          </div>
+           
+        </div>  
+      </div>
+    </div>
+    <!-- End settings -->
+
+    <!-- Start Navbar -->
+    <div class="navbar bg-dark border border-0" data-bs-theme="dark">
+      <div class="container">
+        <a href="index.html" class="navbar-brand d-flex">
+          <svg class="bi me-2 theme-icon-active align-top" width="1.7em" height="1.7em" fill="currentColor"><use href="#cslogo"></use></svg>
+          Camera Slider
+        </a>
+        <ul class="navbar-nav d-flex flex-row">
+          <li class="navbar-item">
+            <button class="nav-link border border-0 bg-opacity-0 p-0" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="width: 48px; height: 32px;">
+              <svg class="align-middle" width="24px" height="24px" fill="currentColor"><use href="#info"></use></svg>
+            </button>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://sasakaranovic.com/projects/diy-camera-slider/" target="_blank">Project Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/SasaKaranovic/DIY-Camera-Slider" target="_blank">Source Code</a>
+          <li class="navbar-item">
+            <button class="nav-link navbar-toggler border border-0 bg-opacity-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation" style="width: 48px; height: 32px;">
+              <svg class="align-middle" width="24px" height="24px" fill="currentColor"><use href="#cog"></use></svg>
+            </button>
           </li>
         </ul>
       </div>
     </div>
-  </div>
+    <!-- End Navbar -->  
+  </header>
+  <!-- End Navbar Container -->
 
-  <!-- Page header - Camera slider -->
-  <div class="container">
-    <!-- Main content  -->
+  <!-- Start Modal -->
+  <div class="modal fade bg-black" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center rounded-4 bg-black border border-1 border-light">
+        <div class="modal-header border border-0">
+          <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h3>About Camera Slider</h3>
+          <h5 class="text-secondary font-monospace mb-4">v%FW_VERSION%</h5>
+          <p class="text-body-dark">Camera slider is made by <a href="https://SasaKaranovic.com/" target="_blank" class="link-offset-2 link-underline link-underline-opacity-0">Saša Karanović</a>.</p>
+          <p>Released as open-source and open-hardware<br>you to hack and enjoy!</p>
+          
+          <div class="col py-4">
+            <ul class="list-group">
+              <li class="list-group-item bg-dark">
+                <a href="https://sasakaranovic.com/projects/diy-camera-slider/" class="text-light link-offset-2 link-underline link-underline-opacity-0 d-block w-100">
+                  <svg class="me-2" width="16" height="16" fill="currentColor"><use href="#link"></use></svg>Project Home
+                </a>
+              </li>
+              <li class="list-group-item bg-dark">
+                <a href="https://github.com/SasaKaranovic/DIY-Camera-Slider" class="text-light link-offset-2 link-underline link-underline-opacity-0 d-block w-100">
+                  <svg class="me-2" width="16" height="16" fill="currentColor"><use href="#git"></use></svg>Source code
+                </a>
+              </li>
+              <li class="list-group-item bg-dark">
+                <a href="" class="text-light link-offset-2 link-underline link-underline-opacity-0 d-block w-100">
+                  <svg class="me-2" width="16" height="16" fill="currentColor"><use href="#mail"></use></svg>Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col py-4">
+            <ul class="list-group">
+              <li class="list-group-item bg-dark">
+                <a href="https://sasakaranovic.com/" class="text-light link-offset-2 link-underline link-underline-opacity-0 d-block w-100">
+                  <svg class="me-2" width="16" height="16" fill="currentColor"><use href="#link"></use></svg>Blog
+                </a>    
+              </li>
+              <li class="list-group-item bg-dark">
+                <a href="https://youtube.com/c/sasakaranovic" class="text-light link-offset-2 link-underline link-underline-opacity-0 d-block w-100">
+                  <svg class="me-2" width="16" height="16" fill="currentColor"><use href="#youtube"></use></svg>Youtube
+                </a>
+              </li>
+              <li class="list-group-item bg-dark">
+                <a href="https://twitter.com/_sasakaranovic_" class="text-light link-offset-2 link-underline link-underline-opacity-0 d-block w-100">
+                  <svg class="me-2" width="16" height="16" fill="currentColor"><use href="#twitter"></use></svg>Twitter / X
+                </a>
+              </li>
+              <li class="list-group-item bg-dark">
+                <a href="https://buymeacoffee.com/sasakaranovic" class="text-light link-offset-2 link-underline link-underline-opacity-0 d-block w-100">
+                  <svg class="me-2" width="16" height="16" fill="currentColor"><use href="#coffee"></use></svg>Buy me a coffee
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Modal -->
+
+  <!-- Start Page Container -->
+  <div class="container mt-4">
+
+    <!-- Start Master Row -->
     <div class="row">
 
       <!-- Left column -->
-      <div class="col-lg-5 col-md-5 col-sm-5">
+      <div class="col-lg-6 col-md-6 col-sm-6 border border-2 border-light rounded-5 p-4 mx-auto">
 
-        <!-- Camera status -->
+        <!-- Start Camera Status Section -->
         <div class="row">
           <div class="col-lg-12">
             <div class="page-header">
@@ -52,258 +285,251 @@
         </div>
 
         <div class="row" id="cameraStatusRow">
-
           <div class="col-lg-12">
             <div class="bs-component">
               Slider homed: <span id="status-homed"><span class="badge badge-success">??</span></span>
             </div>
           </div>
-
           <div class="col-lg-12">
             <div class="bs-component">
               Slider position: <span id="status-position">??</span>mm
             </div>
           </div>
-
           <div class="col-lg-12">
             <div class="bs-component">
               Rotation position: <span id="status-rotation">??</span>°
             </div>
           </div>
-
           <div class="col-lg-12">
             <div class="bs-component">
               Start position set at <span id="status-startSlide">??</span>mm and <span id="status-startRotation">??</span>°
             </div>
           </div>
-
           <div class="col-lg-12">
             <div class="bs-component">
               End position set at <span id="status-endSlide">??</span>mm and <span id="status-endRotation">??</span>°
             </div>
           </div>
-
-          <div class="col-lg-12">
+          <div class="col-lg-12 mt-3">
             <div class="bs-component">
-              <a href="javascript:void(0);" id="refreshStatus">Reload</a>
+              <a href="javascript:void(0);" id="refreshStatus"><svg class="align-middle" width="24px" height="24px" fill="currentColor"><use href="#reload"></use></svg> Reload</a>
             </div>
           </div>
-
         </div>
-        <!-- End camera status -->
+        <!-- End Camera Status Section -->
 
+        <div class="row">
+          <div class="col-lg-12 my-3">
+            <hr />
+          </div>
+        </div>
 
-        <!-- Camera status -->
-        <div class="row mt-4">
-          <div class="col-lg-12 mr-1">
+        <!-- Start Manual Control Section -->
+        <div class="row">
+          <div class="col-lg-12">
             <div class="page-header">
-              <h2 >Manual control</h2>
+              <h2>Manual control</h2>
             </div>
           </div>
 
-          <div class="col-lg-12 mr-1">
-                <legend>Slide (absolute)</legend>
-                <fieldset class="form-group">
-                  <label for="labelManualPosition" data-toggle="tooltip" data-html="true" title="Use mouse wheel to increase/decrease value by 10mm<br>Use CTRL+ mouse wheel to increase/decrease value by 50mm">Position: 0mm</label>
-                  <input type="range" class="custom-range" id="sliderManualPosition" min="0" max="%RAIL_LENGTH%" step="%MIN_STEP_SLIDER%" value="0">
-                </fieldset>
-
-                <legend>Rotate (relative)</legend>
-                <fieldset class="form-group">
-                  <label for="labelManualRotation" data-toggle="tooltip" data-html="true" title="Use mouse wheel to increase/decrease value by 1°<br>Use CTRL+ mouse wheel to increase/decrease value by 5°<br>Double-click to reset to 0°">Rotate for: 0°</label>
-
-                  <input type="range" class="custom-range" id="sliderManualRotation" min="-180" max="180" step="1" value="0">
-                </fieldset>
-
+          <div class="col-lg-12 mb-4">
+            <fieldset class="form-group">
+              <legend>Slide (absolute)</legend>
+              <button class="border border-0 bg-black float-end" type="button" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-placement="left" data-bs-html="true" data-bs-title="Use mouse wheel to increase/decrease value by 10mm.<br>Use CTRL+ mouse wheel to increase/decrease value by 50mm.">
+                <svg class="align-top" width="18" height="18" fill="#FFF"><use href="#info"></use></svg>
+              </button>
+              <label for="labelManualPosition">Position: <span class="badge text-bg-warning text-light dynamic-text fs-6 py-1">0mm</span></label>
+              <input type="range" class="form-range" id="sliderManualPosition" min="0" max="%RAIL_LENGTH%" step="%MIN_STEP_SLIDER%" value="0">
+            </fieldset>
+            <fieldset class="form-group">
+              <legend>Rotate (relative)</legend>
+              <button class="border border-0 bg-black float-end" type="button" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-placement="left" data-bs-html="true" data-bs-title="Use mouse wheel to increase/decrease value by 1°.<br>Use CTRL+ mouse wheel to increase/decrease value by 5°.<br>Double-click to reset to 0°">
+                <svg class="align-top" width="18" height="18" fill="#FFF"><use href="#info"></use></svg>
+              </button>
+              <label for="labelManualRotation">Rotate for: <span class="badge text-bg-warning text-light dynamic-text fs-6 py-1">0°</span></label>
+              <input type="range" class="form-range" id="sliderManualRotation" min="-180" max="180" step="1" value="0">
+            </fieldset>
           </div>
 
-          <div class="col-lg-12 mr-2">
-                <button type="button" id="btnManualMove" class="btn btn-primary">Move!</button>
-                <button type="button" id="btnSetStartPos" class="btn btn-primary">Set as START position</button>
-                <button type="button" id="btnSetEndPos" class="btn btn-primary">Set as END position</button>
-          </div>         
-
-          <div class="row mr-4">
-            <div class="col-lg-12 mr-2">
-              <hr />
-            </div>
+          <div class="col-lg-12 d-flex justify-content-between gap-3 mb-4">
+            <button type="button" id="btnManualMove" class="btn btn-warning btn-lg text-light fw-bolder w-100">MOVE</button>
           </div>
+          <div class="col-lg-12 d-flex justify-content-between gap-3">
+            <button type="button" id="btnSetStartPos" class="btn btn-primary w-50 text-center">SET START POSITION</button>
+            <button type="button" id="btnSetEndPos" class="btn btn-primary w-50 text-center">SET END POSITION</button>
+          </div> 
+        </div>
+        <!-- End Manual Control Section -->
 
-          <div class="col-lg-12 mr-2">
-                <button type="button" id="btnMoveToStart" class="btn btn-primary">Move to start</button>
-                <button type="button" id="btnMoveToEnd" class="btn btn-primary">Move to end</button>
+        <div class="row">
+          <div class="col-lg-12 my-3">
+            <hr />
           </div>
-
         </div>
 
-        <div class="row mt-4">
+        <!-- Start Buttons - Manual Control -->
+        <div class="row">
+          <div class="col-lg-12 d-flex justify-content-between gap-3">
+            <button type="button" id="btnMoveToStart" class="btn btn-primary w-50 text-center">MOVE TO START</button>
+            <button type="button" id="btnMoveToEnd" class="btn btn-primary w-50 text-center">MOVE TO END</button>
+          </div>
+        </div>
+        <!-- End Buttons - Manual Control -->
+
+        <div class="row">
+          <div class="col-lg-12 my-3">
+            <hr />
+          </div>
+        </div>
+
+        <!-- Start Manual Moves Configuration Section -->
+        <div class="row">
+          <div class="col-lg-12 text-center mb-4">
+            <h5 data-bs-toggle="collapse" data-bs-target="#mmConfig" aria-expanded="false" aria-controls="mmConfig">
+              <svg class="" width="24" height="24" fill="currentColor"><use href="#arrowDown"></use></svg>
+              Manual Moves Configuration
+              <svg class="p" width="24" height="24" fill="currentColor"><use href="#arrowDown"></use></svg>
+            </h5>
+          </div>
+        </div>
+        
+        <div class="row">
           <div class="col-lg-12 mr-2">
-
-
-                <div class="row">
-                <div class="col-lg-12 mr-2">
-                <legend>Manual Moves Configuration</legend>
-                </div>
-
-                <!-- Left speed column -->
-                <div class="col-lg-5 mr-2">
+            <div class="row collapse" id="mmConfig">
+              <div class="col-lg-6">
                 <div class="form-group">
                   <label class="control-label">Slider speed</label>
                   <div class="input-group mb-1">
-                    <input type="text" id="cfgSliderSpeed" class="form-control" aria-label="" size="5" maxlength="7" value="30.0">
+                    <input type="text"  pattern="[0-9]*" id="cfgSliderSpeed" class="form-control" aria-label="" size="5" maxlength="7" value="30.0">
                     <div class="input-group-append">
                       <span class="input-group-text">mm/s</span>
                     </div>
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label class="control-label">Rotation speed</label>
                   <div class="input-group mb-1">
-                    <input type="text" id="cfgRotationSpeed" class="form-control" aria-label="" size="5" maxlength="7"  value="60.0">
+                    <input type="text"  pattern="[0-9]*" id="cfgRotationSpeed" class="form-control" aria-label="" size="5" maxlength="7" value="60.0">
                     <div class="input-group-append">
                       <span class="input-group-text">deg/s</span>
                     </div>
                   </div>
                 </div>
-              </div>  <!-- End left speed column -->
-
-                <!-- Right speed column -->
-                <div class="col-lg-5 mr-2">
+              </div>
+              <div class="col-lg-6">
                 <div class="form-group">
                   <label class="control-label">Slider acceleration</label>
                   <div class="input-group mb-1">
-                    <input type="text" id="cfgSliderAccel" class="form-control" aria-label="" size="5" maxlength="7" value="60.0">
+                    <input type="text"  pattern="[0-9]*" id="cfgSliderAccel" class="form-control" aria-label="" size="5" maxlength="7" value="60.0">
                     <div class="input-group-append">
                       <span class="input-group-text">mm/s<sup>2</sup></span>
                     </div>
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label class="control-label">Rotation acceleration</label>
                   <div class="input-group mb-1">
-                    <input type="text" id="cfgRotationAccel" class="form-control" aria-label="" size="5" maxlength="7"  value="30.0">
+                    <input type="text"  pattern="[0-9]*" id="cfgRotationAccel" class="form-control" aria-label="" size="5" maxlength="7" value="30.0">
                     <div class="input-group-append">
                       <span class="input-group-text">deg/s<sup>2</sup></span>
                     </div>
                   </div>
                 </div>
-              </div>  <!-- End right speed column -->
+              </div>
 
-              </div >
-
+            </div>
           </div>
-        </div>  <!-- End camera status -->
+        </div>
+        <!-- End Manual Moves Configuration Section -->
 
+      </div>
+      <!-- End Left Column -->
 
-      </div> <!-- End left column -->
+      <!-- Start Right Column -->
+      <div class="col-lg-5 col-md-5 col-sm-6 border border-2 border-light rounded-5 p-4 mx-auto">
+        <div class="row">
 
-      <!-- Right column -->
-      <div class="col-lg-5 col-md-5 col-sm-5 offset-2">
-      <div class="row">
-
-      <!-- Setup camera
-      ================================================== -->
-          <div class="col-lg-12">
+          <div class="col-lg-12 mb-4">
             <div class="page-header">
               <h2>Automatic sliding</h2>
             </div>
           </div>
 
-          <div class="col-lg-12">
+          <div class="col-lg-12 mb-4">
             <form>
-                <legend>Position</legend>
-              <div class="form-group form-inline">
+              <h4>Position</h4>
+
+              <div class="form-group form-inline mb-4">
                 <div class="form-check form-switch">
                   <input class="form-check-input" type="checkbox" id="checkFromStartToEnd" checked>
                   <label class="form-check-label" for="checkFromStartToEnd">Calculate using START and END positions</label>
                 </div>
               </div>
 
-            <div id="manualSlidingPos" style="display:none">
+              <div id="manualSlidingPos" style="display:none" class="mb-4">
                 <fieldset class="form-group">
-                  <label for="labelStartPosition">Start position: 0mm</label>
-                  <input type="range" class="custom-range" id="sliderStartPosition" min="0" max="%RAIL_LENGTH%" step="10" value="0">
+                  <label for="labelStartPosition">Start position: <span class="badge text-bg-warning text-light dynamic-text fs-6 py-1">0mm</span></label>
+                  <input type="range" class="form-range" id="sliderStartPosition" min="0" max="%RAIL_LENGTH%" step="10" value="0">
                 </fieldset>
 
                 <fieldset class="form-group">
-                  <label for="labelEndPosition">End position: %RAIL_LENGTH%mm</label>
-                  <input type="range" class="custom-range" id="sliderEndPosition" min="0" max="%RAIL_LENGTH%" step="10" value="%RAIL_LENGTH%" >
+                  <label for="labelEndPosition">End position: <span class="badge text-bg-warning text-light dynamic-text fs-6 py-1">%RAIL_LENGTH%mm</span></label>
+                  <input type="range" class="form-range" id="sliderEndPosition" min="0" max="%RAIL_LENGTH%" step="10" value="%RAIL_LENGTH%">
                 </fieldset>
 
-
-                <legend>Rotation</legend>
+                <h4 class="mt-4">Rotation</h4>
                 <fieldset class="form-group">
-                  <label for="labelRotateBy">Rotate camera for: 0°</label>
-                  <input type="range" class="custom-range" id="sliderRotateBy" min="-360" max="360" step="1" value="0" >
+                  <label for="labelRotateBy">Rotate camera for: <span class="badge text-bg-warning text-light dynamic-text fs-6 py-1">0°</span></label>
+                  <input type="range" class="form-range" id="sliderRotateBy" min="-360" max="360" step="1" value="0">
                 </fieldset>
-            </div>
-
-
-                <legend>Duration</legend>
-              <div class="form-group form-inline">
-                <input type="text" id="inputHours" name="hours" placeholder="Hour(s)" class="form-control form-control-sm" size="7" maxlength="3">
-                <input type="text" id="inputMinutes" name="minutes" placeholder="Minute(s)" class="form-control form-control-sm" size="7" maxlength="2">
-                <input type="text" id="inputSeconds" name="seconds" placeholder="Second(s)" class="form-control form-control-sm" size="7" maxlength="2">
               </div>
 
-
-                <button type="button" class="btn btn-primary" id="btnAutoSlide">Start</button>
-
+              <h4>Duration</h4>
+              <div class="input-group mb-4">
+                <span class="input-group-text">H</span>
+                <input type="text" pattern="[0-9]*" id="inputHours" name="hours" placeholder="Hour(s)" class="form-control form-control-sm" size="7" maxlength="3">
+                <span class="input-group-text">Min</span>
+                <input type="text" pattern="[0-9]*" id="inputMinutes" name="minutes" placeholder="Minute(s)" class="form-control form-control-sm" size="7" maxlength="2">
+                <span class="input-group-text">Sec</span>
+                <input type="text" pattern="[0-9]*" id="inputSeconds" name="seconds" placeholder="Second(s)" class="form-control form-control-sm" size="7" maxlength="2">
+              </div>
+              <button type="button" class="btn btn-primary btn-lg w-100" id="btnAutoSlide">START</button>
             </form>
           </div>
 
-          <div class="col-lg-12 mt-5">
-                <div class="row">
-                <div class="col-lg-12 mr-2">
-                <legend>Setup</legend>
-                </div>
-                </div>
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-12 mr-2">
+                <h4>Setup</h4>
+              </div>
+            </div>
 
-                <div class="bmb-3">
-                  <div class="btn-group" role="group">
-                    <button type="button" id="btnHomeSlider" class="btn btn-secondary">Home Slider</button>
-                  </div>
-
-                  <div class="btn-group" role="group">
-                    <button type="button" id="btnHomeRotation" class="btn btn-secondary">Home Rotation</button>
-                  </div>
+            <div class="bmb-3">
+              <div class="col-lg-12 my-2">
+                <div class="btn-group w-100" role="group">
+                  <button type="button" id="btnHomeSlider" class="btn btn-secondary">Home Slider</button>
+                  <button type="button" id="btnHomeRotation" class="btn btn-secondary">Home Rotation</button>
                 </div>
-
-                <div class="bmb-3 mt-3">
-                  <div class="btn-group" role="group">
-                    <button type="button" id="btnMotorsOn" class="btn btn-secondary">Motors ON</button>
-                  </div>
-                  <div class="btn-group" role="group">
-                    <button type="button" id="btnMotorsOff" class="btn btn-secondary">Motors OFF</button>
-                  </div>
+              </div>
+              <div class="col-lg-12 my-3">
+                <div class="btn-group w-100" role="group">
+                  <button type="button" id="btnMotorsOn" class="btn btn-success">Motors ON</button>
+                  <button type="button" id="btnMotorsOff" class="btn btn-danger">Motors OFF</button>
                 </div>
+              </div>
+            </div>
 
           </div>
 
+        </div>
       </div>
-    </div> <!-- End right column -->
-    </div>
+      <!-- End Right Column -->
 
-    <footer class="w-100 py-2 flex-shrink-3 mt-5 dark-bg">
-            <div class="row gy-4 gx-5">
-                <div class="col-lg-6 col-md-6">
-                    <p class="small text-muted">
-                      Camera slider v%FW_VERSION% made by <a href="https://SasaKaranovic.com/" target="_blank">Saša Karanović</a><br>
-                      Released as open-source and open-hardware for you to hack and enjoy! :)<br>
-                  </p>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                      <a class="m-2" href="https://sasakaranovic.com/" target="_blank"><i class="fas fa-home"></i> Blog</a>
-                      <a class="m-2" href="https://youtube.com/c/sasakaranovic" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-                      <a class="m-2" href="https://twitter.com/_sasakaranovic_" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-                      <a class="m-2" href="https://github.com/sasakaranovic" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                      <a class="m-2" href="https://buymeacoffee.com/sasakaranovic" target="_blank"><i class="fas fa-mug-hot"></i> Buy me a coffee</a>
-                </div>
-            </div>
-    </footer>
+    </div>
+    <!-- End Master Row -->
+
   </div>
+  <!-- End Page Container -->
 
   <script src="js/jquery-3.6.0.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
